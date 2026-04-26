@@ -39,8 +39,8 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"],
 }))
 
-app.use(express.json({ limit: "25mb" }))
-app.use(express.urlencoded({ extended: true, limit: "25mb" }))
+app.use(express.json({ limit: "50mb" }))
+app.use(express.urlencoded({ extended: true, limit: "50mb" }))
 app.use(cookieParser())
 
 app.get("/", (req, res) => {
@@ -58,6 +58,17 @@ app.use("/api/deaths", resourceRoutes("deaths"))
 app.use("/api/marriages", resourceRoutes("marriages"))
 app.use("/api/moves", resourceRoutes("moves"))
 app.use("/api/family-cards", resourceRoutes("family_cards"))
+
+app.use((err, req, res, next) => {
+  if (err?.type === "entity.too.large" || err?.status === 413) {
+    return res.status(413).json({
+      message:
+        "Ukuran file terlalu besar untuk diproses. Silakan kecilkan file atau gunakan file dengan resolusi lebih rendah.",
+    })
+  }
+
+  return next(err)
+})
 
 // Seed admin user on startup
 async function seedAdminUser() {
