@@ -45,6 +45,7 @@ function isAllowedOrigin(origin) {
       return true
     }
 
+<<<<<<< HEAD
     if (
       hostname === "localhost" ||
       hostname === "127.0.0.1" ||
@@ -52,6 +53,9 @@ function isAllowedOrigin(origin) {
       hostname.endsWith(".test") ||
       hostname.endsWith(".local")
     ) {
+=======
+    if (hostname === "localhost" || hostname === "127.0.0.1") {
+>>>>>>> 99ac0b4ce035b8e744d1c49f73a1d8e2b6b9a567
       return true
     }
   } catch {
