@@ -33,6 +33,7 @@ const defaultData = {
 await db.read()
 if (!db.data) {
   db.data = defaultData
+  await db.write()
 }
 
 function nextId(collectionName) {
