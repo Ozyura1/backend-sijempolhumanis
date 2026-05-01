@@ -21,6 +21,7 @@ const port = process.env.PORT || 8000
 const explicitOrigins = [
   "http://localhost:3000",
   "http://127.0.0.1:3000",
+  "http://localhost:8000/api",
   "https://sijempolhumanis.web.id",
   "https://www.sijempolhumanis.web.id",
   process.env.FRONTEND_URL,
