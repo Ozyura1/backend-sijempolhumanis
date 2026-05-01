@@ -28,12 +28,12 @@ const defaultData = {
   marriages: [],
   moves: [],
   family_cards: [],
+  otp_requests: [],
 }
 
 await db.read()
 if (!db.data) {
   db.data = defaultData
-  await db.write()
 }
 
 function nextId(collectionName) {
